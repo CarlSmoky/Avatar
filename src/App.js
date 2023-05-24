@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import DisplayCharacter from './component/DisplayCharacter';
+import Nav from './component/Nav';
+import Base from './component/Base';
+import HairColor from './component/HairColor';
+import SkinColor from './component/SkinColor';
+import { modes } from './helpers/mode';
+import useApplicationData from './hooks/useApplicationData';
 
-function App() {
+const App = () => {
+
+  const {mode, setMode, setProfile, characterEndPoint} = useApplicationData();
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DisplayCharacter characterEndPoint={characterEndPoint}/>
+      <Nav setMode={setMode}/>
+      {mode === modes.base && <Base setProfile={setProfile}/>}
+      {mode === modes.skinColor && <SkinColor setProfile={setProfile}/>}
+      {mode === modes.hairColor &&<HairColor setProfile={setProfile}/>}
     </div>
   );
 }
