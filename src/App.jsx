@@ -18,6 +18,7 @@ const App = () => {
       {mode === modes.base && <Base setProfile={setProfile}/>}
       {mode === modes.skinColor && <SkinColor setProfile={setProfile}/>}
       {mode === modes.hairColor &&<HairColor setProfile={setProfile}/>}
+      <button className="save-button">Save</button>
     </div>
   );
 }
