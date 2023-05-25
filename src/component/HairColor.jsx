@@ -1,14 +1,26 @@
 import React from 'react'
+import { hairColorHex } from '../helpers/options'
+import DotButton from './DotButton'
 
 const HairColor = ({setProfile}) => {
+
+  const hairColors = Object.entries(hairColorHex).map(([nameOfColor, hex]) => {
+    const className = `dot-button ${nameOfColor}`;
+    return (
+      <DotButton
+        key={nameOfColor}
+        attribute="hairColor"
+        className={className}
+        hex={hex}
+        setProfile={setProfile}
+      />
+    )
+  })
 
   return (
     <div className="hair-color-wrapper">
       <h2>Hair Color</h2>
-      <button className="color-button blue" onClick={() => setProfile("hairColor", "85c2c6")} />
-      <button className="color-button gold" onClick={() => setProfile("hairColor", "e5d7a3")} />
-      <button className="color-button purple" onClick={() => setProfile("hairColor", "592454")} />
-      <button className="color-button silver" onClick={() => setProfile("hairColor", "afafaf")} />
+      {hairColors}
     </div>
   )
 }
