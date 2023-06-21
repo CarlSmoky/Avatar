@@ -18,7 +18,7 @@ const useApplicationData = () => {
   }
 
   useEffect(() => {
-    
+    // Make size dinamically
     let url = "https://api.dicebear.com/6.x/adventurer/svg?size=120&"
     if(attributes.base) {
       url += `seed=${attributes.base}&`;
